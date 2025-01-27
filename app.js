@@ -54,20 +54,24 @@ function sortearAmigo(){
     //Genera aleatoriamente un índice dentro de los índices disponibles en el arreglo amigos
     let indiceAleatorio = Math.floor(Math.random() * amigos.length);
 
-    let elementoPadre = document.getElementById("resultado");
-    let lista = document.getElementById("listaAmigos");
+    //Obtiene el amigo ganador correspondiente al índice generado
+    let amigoGanador = amigos[indiceAleatorio];
 
-    for(let i = 0; i < amigos.length; i++){
-        //Valida que el índice aleatorio sea igual al índice actual
-        if(i == indiceAleatorio){
-            //Crea un elemento HTML "li"
-            let elementoHijo = document.createElement("li")
-            //Establece el valor del elemento HTML
-            elementoHijo.innerHTML = amigos[i];
-            //Agrega un elemento hijo al elemento HTML padre
-            elementoPadre.appendChild(elementoHijo);
-            //Borra la lista de amigos
-            lista.innerHTML = "";
-        }
-    }
+    //Obtiene el elemento padre HTML por medio de su id
+    let elementoPadre = document.getElementById("resultado");
+    //Crea un elemento HTML "li"
+    let elementoHijo = document.createElement("li")
+    //Establece el valor del elemento HTML
+    elementoHijo.innerHTML = amigoGanador;
+    //Elimina el contenido del elemento padre HTML
+    elementoPadre.innerHTML = "";
+    //Agrega el elemento hijo al elemento HTML padre
+    elementoPadre.appendChild(elementoHijo);
+
+    //Obtiene el elemento HTML por medio de su id
+    let lista = document.getElementById("listaAmigos");
+    //Borra la lista de amigos
+    lista.innerHTML = "";
+    //Borra los elementos del arreglo amigos
+    amigos = [];
 }
