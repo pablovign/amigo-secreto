@@ -43,3 +43,31 @@ function actualizarListaAmigos(){
         elementoHTML.appendChild(elemento);
     }
 }
+
+function sortearAmigo(){
+    //Valida que haya amigos disponibles
+    if(amigos.length == 0){
+        //Si no hay amigos disponibles, sale de la función
+        return;
+    }
+
+    //Genera aleatoriamente un índice dentro de los índices disponibles en el arreglo amigos
+    let indiceAleatorio = Math.floor(Math.random() * amigos.length);
+
+    let elementoPadre = document.getElementById("resultado");
+    let lista = document.getElementById("listaAmigos");
+
+    for(let i = 0; i < amigos.length; i++){
+        //Valida que el índice aleatorio sea igual al índice actual
+        if(i == indiceAleatorio){
+            //Crea un elemento HTML "li"
+            let elementoHijo = document.createElement("li")
+            //Establece el valor del elemento HTML
+            elementoHijo.innerHTML = amigos[i];
+            //Agrega un elemento hijo al elemento HTML padre
+            elementoPadre.appendChild(elementoHijo);
+            //Borra la lista de amigos
+            lista.innerHTML = "";
+        }
+    }
+}
